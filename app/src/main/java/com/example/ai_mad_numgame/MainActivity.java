@@ -70,15 +70,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newMatch() {  //A game is composed of three matches
-
+        int cns =-100;
         int operand1 = random.nextInt(10);
-        int operand2=0;
+        int operand2=random.nextInt(10);
+
         //check is operand2 is not zero; otherwise in case of division-divide by zero error will come
         String operator = operators[random.nextInt(4)];
         textView2.setText(operand1 + operator + operand2);
+        if(operator=="+")
+        {
+            cns=operand1+operand2;
+        }
+        else if (operator.equals("-"))
+            cns=operand1-operand2;
+
+        if(correctButton==1)
+        {
+            button1.setText(cns);
+            button2.setText(cns+1+"");
+            button3.setText(cns-1+" ");
+            button4.setText(cns+2+" ");
+        }
+
 
       // Your code here, to diplay correct and incorrect options on the buttons
+        if(correctButton==0)
+        {
 
+        }
         if(matchCounter==3){    // if three matches are completed updatee the perfomrance in sharedpreferences
 
             matchCounter=0;
