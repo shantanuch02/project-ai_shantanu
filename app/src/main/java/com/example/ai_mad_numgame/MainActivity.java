@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         int[][]dataFrame=dataPrep(); //dataPrep function returns a two-dimenssional array
         double slope=LR.getSlope(dataFrame); //LR class, which provides slope on invoking getSlope
         new AlertDialog.Builder(this)
-               // .setIcon() //your custom icon
+                // .setIcon() //your custom icon
                 .setTitle("Performance")
 
                 .setMessage(getInterpretation(dataFrame,slope))
@@ -70,15 +70,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newMatch() {  //A game is composed of three matches
-        int cns =-100;
+
         int operand1 = random.nextInt(10);
-        int operand2=random.nextInt(10);
+        int operand2 = random.nextInt(10);
         correctButton = random.nextInt(3);
         int correctans=-100;
-
-        //check is operand2 is not zero; otherwise in case of division-divide by zero error will come
-        String operator = operators[random.nextInt(4)];
-        textView2.setText(operand1 + operator + operand2);
+        String operator=operators[random.nextInt(4)];
+        textView2.setText(operand1+operator+operand2);
         if(correctButton==0){
             if(operator.equals("+"))
             {
@@ -137,13 +135,66 @@ public class MainActivity extends AppCompatActivity {
                 button4.setText((operand1+operand2+30+" "));
             }
         }
-
-
-      // Your code here, to diplay correct and incorrect options on the buttons
-        if(correctButton==0)
-        {
-
+        else if(correctButton==2){
+            if(operator.equals("+"))
+            {
+                button1.setText(operand1+operand2+50+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("-"))
+            {
+                button1.setText(operand1+operand2+50+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1-operand2+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("/")) {
+                button1.setText(operand1+operand2+20+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1/operand2+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("*"))
+            {
+                button1.setText(operand1*operand2+60+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1*operand2+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
         }
+        else{
+            if(operator.equals("+"))
+            {
+                button1.setText(operand1+operand2+4+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+" "));
+            }
+            else if(operator.equals("-"))
+            {
+                button1.setText(operand1+operand2+6+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1-operand2+" "));
+            }
+            else if(operator.equals("/")) {
+                button1.setText(operand1/operand2+60+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1/operand2+" "));
+            }
+            else if(operator.equals("*"))
+            {
+                button1.setText(operand1*operand2+69+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1*operand2+" "));
+            }
+        }
+
+
         if(matchCounter==3){    // if three matches are completed updatee the perfomrance in sharedpreferences
 
             matchCounter=0;
@@ -160,7 +211,10 @@ public class MainActivity extends AppCompatActivity {
     public int sumOfScore(){
         //Computing the sum of score array, which has the 1 or in each index,depending on correct or incorrect answers
         int sum=0;
-       // your code here
+        // your code here
+        for (int i=0; i<score.length; i++ ){
+            sum += score[i];
+        }
         return sum;
     }
 
@@ -178,8 +232,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String getInterpretation(int [][]dataFrame,double slope){
-       //provide interpretation based on your slope analysis
+        //provide interpretation based on your slope analysis
         // Your code here
+        if (slope==0){
+            return "You are not at all good in it";
+        }
+        else if(slope>0 && slope<1.5){
+            return "Improvement is required";
+        }
+        else if(slope>1.5 && slope<=3){
+            return "You are getting better";
+        }
+        else if(slope<0){
+            return "Decline in Performance";
+        }
         return "Your Interpretation";
     }
 }
