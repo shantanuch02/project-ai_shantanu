@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         int cns =-100;
         int operand1 = random.nextInt(10);
         int operand2=random.nextInt(10);
+        correctButton = random.nextInt(3);
+        int correctans=-100;
 
         //check is operand2 is not zero; otherwise in case of division-divide by zero error will come
         String operator = operators[random.nextInt(4)];
