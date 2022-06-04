@@ -79,19 +79,63 @@ public class MainActivity extends AppCompatActivity {
         //check is operand2 is not zero; otherwise in case of division-divide by zero error will come
         String operator = operators[random.nextInt(4)];
         textView2.setText(operand1 + operator + operand2);
-        if(operator=="+")
-        {
-            cns=operand1+operand2;
+        if(correctButton==0){
+            if(operator.equals("+"))
+            {
+                button1.setText(operand1+operand2+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("-"))
+            {
+                button1.setText(operand1-operand2+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("/")) {
+                button1.setText(operand1/operand2+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("*"))
+            {
+                button1.setText(operand1*operand2+"");
+                button2.setText((operand1+operand2+10+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
         }
-        else if (operator.equals("-"))
-            cns=operand1-operand2;
-
-        if(correctButton==1)
-        {
-            button1.setText(cns);
-            button2.setText(cns+1+"");
-            button3.setText(cns-1+" ");
-            button4.setText(cns+2+" ");
+        else if(correctButton==1){
+            if(operator.equals("+"))
+            {
+                button1.setText(operand1+operand2+20+"");
+                button2.setText((operand1+operand2+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("-"))
+            {
+                button1.setText(operand1+operand2+20+"");
+                button2.setText((operand1-operand2+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("/")) {
+                button1.setText(operand1/operand2+20+"");
+                button2.setText((operand1/operand2+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
+            else if(operator.equals("*"))
+            {
+                button1.setText(operand1*operand2+30+"");
+                button2.setText((operand1*operand2+" "));
+                button3.setText((operand1+operand2+20+" "));
+                button4.setText((operand1+operand2+30+" "));
+            }
         }
 
 
